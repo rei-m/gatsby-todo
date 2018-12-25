@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'gatsby'
 
 export interface TodoProps {
   id: number;
@@ -15,16 +16,18 @@ const Todo: React.FunctionComponent<TodoProps> = ({
     textDecoration: completed ? 'line-through' : 'none',
   };
 
-  const handleOnClick = (e: React.SyntheticEvent<HTMLLIElement>) => {
+  const handleOnClick = (e: React.SyntheticEvent<HTMLSpanElement>) => {
     onClick(id);
   };
 
   return (
-    <li
-      onClick={handleOnClick}
-      style={style}
-    >
-      {text}
+    <li style={style}>
+      <span onClick={handleOnClick}>
+        {text}
+      </span>
+      <span style={ { marginLeft: 16 } }>
+        <Link to="/page-2/">詳細</Link>
+      </span>
     </li>
   );
 };
