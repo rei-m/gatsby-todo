@@ -2,6 +2,8 @@ import { Action } from 'redux';
 
 let nextTodoId = 0;
 
+export const createTodoId = () => nextTodoId++;
+
 /*
  * action types
  */
@@ -19,18 +21,18 @@ export const VisibilityFilter = {
 };
 
 export interface SetVisibilityFilterAction extends Action {
-  type: string;
+  type: typeof SET_VISIBILITY_FILTER;
   filter: string;
 }
 
 export interface AddTodoAction extends Action {
-  type: string;
+  type: typeof ADD_TODO;
   id: number;
   text: string;
 }
 
 export interface ToggleTodoAction extends Action {
-  type: string;
+  type: typeof TOGGLE_TODO;
   id: number;
 }
 
@@ -39,7 +41,7 @@ export interface ToggleTodoAction extends Action {
  */
 export function addTodo(text: string): AddTodoAction {
   return {
-    id: nextTodoId++,
+    id: createTodoId(),
     text: text,
     type: ADD_TODO,
   };

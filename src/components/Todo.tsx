@@ -26,7 +26,7 @@ const Todo: React.FunctionComponent<TodoProps> = ({
         {text}
       </span>
       <span style={ { marginLeft: 16 } }>
-        <Link to="/page-2/">詳細</Link>
+        <Link to={`/todo/${id}/`}>詳細</Link>
       </span>
     </li>
   );

@@ -1,38 +1,21 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Link from 'gatsby-link';
-import Helmet from 'react-helmet';
+// import Helmet from 'react-helmet';
 
-const Template = ({ data, location, pathContext }) => {
-  const { markdownRemark: post } = data;
-  const { frontmatter, html } = post;
-  const { title, date } = frontmatter;
+// const TodoDetailInterface {
+//   data
+// }
 
+const Template = (props) => {
+  console.dir(props);
   return (
+    <div>
       <div>
-        <Helmet title={`${frontmatter.title} - My Blog`}/>
-        <div>
-          <h1>{title}</h1>
-          <h3>{date}</h3>
-          <div dangerouslySetInnerHTML={{__html: html}}/>
-        </div>
+        <h1>{props.pageContext.name}</h1>
       </div>
+    </div>
   );
 };
-
-export const pageQuery = graphql`
-  query BlogPostByPath($path: String!){
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        path
-        tags
-        excerpt
-      }
-    }
-  }
-`;
 
 export default Template;

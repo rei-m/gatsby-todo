@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { graphql } from "gatsby";
 import AddTodo from '../containers/AddTodo';
 import VisibleTodoList from '../containers/VisibleTodoList';
-// import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import Footer from '../components/Footer'
 import SEO from '../components/seo'
@@ -19,9 +19,20 @@ import SEO from '../components/seo'
 //   </Layout>
 // )
 
-const IndexPage: React.FunctionComponent<{}> = () => (
+export interface IndexPageProps {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+      }
+    }
+  }
+}
+
+const IndexPage: React.FunctionComponent<IndexPageProps> = ({ data }) => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} description="" />
+    <h1>{data.site.siteMetadata.title}</h1>
     <AddTodo />
     <VisibleTodoList />
     <Footer />
@@ -29,3 +40,13 @@ const IndexPage: React.FunctionComponent<{}> = () => (
 );
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;

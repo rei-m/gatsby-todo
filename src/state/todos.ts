@@ -3,32 +3,42 @@ import {
   AddTodoAction,
   TOGGLE_TODO,
   ToggleTodoAction,
+  createTodoId,
 } from '../actions';
 import { Todo } from '../types';
 
-const createTodo = (action: AddTodoAction): Todo => {
-  return {
-    completed: false,
-    id: action.id,
-    text: action.text,
-  };
-};
+const createTodo = ({ id, text }: AddTodoAction): Todo => ({
+  completed: false,
+  id,
+  text,
+});
 
 const toggleTodo = (state: Todo, action: ToggleTodoAction): Todo => {
   if (state.id !== action.id) {
     return state;
   }
-  return Object.assign({}, state, {
+  return {
+    ...state,
     completed: !state.completed,
-  });
+  };
 };
 
-const todos = (state: Todo[] = [], action: AddTodoAction | ToggleTodoAction) => {
+const initialData: Todo[] = [{
+  id: createTodoId(),
+  text: '最初のTODO',
+  completed: false
+}, {
+  id: createTodoId(),
+  text: '２個めのTODO',
+  completed: false
+}];
+
+const todos = (state: Todo[] = initialData, action: AddTodoAction | ToggleTodoAction) => {
   switch (action.type) {
     case ADD_TODO:
       return [
         ...state,
-        createTodo(action as AddTodoAction),
+        createTodo(action),
       ];
     case TOGGLE_TODO:
       return state.map((t) =>
