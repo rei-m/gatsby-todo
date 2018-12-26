@@ -35,7 +35,11 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@types/react-redux": "^6.0.11",
-    "prettier": "^1.15.2"
+    "gatsby-plugin-remove-trailing-slashes": "^2.0.6",
+    "prettier": "^1.15.2",
+    "source-map-support": "^0.5.9",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
   },
   "repository": {
     "type": "git",

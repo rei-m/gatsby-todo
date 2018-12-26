@@ -23,7 +23,8 @@ const toggleTodo = (state: Todo, action: ToggleTodoAction): Todo => {
   };
 };
 
-const initialData: Todo[] = [{
+// あとでgetStateから取るようにしたほうがいいかな
+export const initialData: Todo[] = [{
   id: createTodoId(),
   text: '最初のTODO',
   completed: false

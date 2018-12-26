@@ -56,20 +56,18 @@ const Top = props => (
     <VisibleTodoList />
   </div>
 )
-{/* <AppRouter>
-<Top path="/" />
-<Page path="todos/:id" />
-</AppRouter> */}
-const IndexPage: React.FunctionComponent<IndexPageProps> = ({ data }) => (
+
+const IndexPage: React.FunctionComponent<IndexPageProps> = (props) => {
+  console.dir(props);
+  console.dir(props['*']);
+  console.dir(props['pathContext']['matchPath']);
+  return (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} description="" />
-    <h1>{data.site.siteMetadata.title}</h1>
-    <AddTodo />
-    <VisibleTodoList />
+    <div>unko</div>
     <Footer />
   </Layout>
 );
-
+  }
 export default IndexPage
 
 export const query = graphql`
