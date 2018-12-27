@@ -10,7 +10,7 @@ const mapDispatchToProps = (dispatch: Dispatch<AddTodoAction>) => ({
 });
 
 const AddTodo = connect(
-  null,
+  undefined,
   mapDispatchToProps,
 )(AddTodoForm);
 

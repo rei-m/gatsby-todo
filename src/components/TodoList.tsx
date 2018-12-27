@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Todo } from '../types';
-import TodoView from './Todo';
+import TodoListItem from './TodoListItem';
 
 export interface TodoListProps {
   todos: Todo[];
   onTodoClick: (id: number) => void;
 }
 
-const TodoList: React.FunctionComponent<TodoListProps> = ({ todos, onTodoClick }) => (
+const TodoList: React.FC<TodoListProps> = ({ todos, onTodoClick }) => (
   <ul>
-    {todos.map((todo) => <TodoView
+    {todos.map((todo) => <TodoListItem
       key={todo.id}
       {...todo}
       onClick={onTodoClick}

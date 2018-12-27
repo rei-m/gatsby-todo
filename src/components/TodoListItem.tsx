@@ -8,7 +8,7 @@ export interface TodoProps {
   onClick: (id: number) => void;
 }
 
-const Todo: React.FunctionComponent<TodoProps> = ({
+const Todo: React.FC<TodoProps> = ({
   id, text, completed, onClick
 }) => {
 

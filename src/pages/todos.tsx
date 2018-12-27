@@ -1,37 +1,14 @@
 import React from 'react';
 import { graphql } from "gatsby";
-import { Router, Link, Location } from "@reach/router"
-import AddTodo from '../containers/AddTodo';
-import VisibleTodoList from '../containers/VisibleTodoList';
-import Layout from '../components/layout'
-import Footer from '../components/Footer'
-import SEO from '../components/seo'
+import { Match, MatchRenderProps } from "@reach/router"
+import Layout from '../components/Layout'
+import SEO from '../components/Seo'
+import NotFound from './404'
+import { Todo } from '../types';
+import { GlobalState } from '../state/createStore';
+import { connect } from 'react-redux';
 
-// const IndexPage: React.FunctionComponent<{}> = () => (
-//   <Layout>
-//     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} description="" />
-//     <h1>Hi people</h1>
-//     <p>Welcome to your new Gatsby site.</p>
-//     <p>Now go build something great.</p>
-//     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-//       <Image />
-//     </div>
-//     <Link to="/page-2/">Go to page 2</Link>
-//   </Layout>
-// )
-
-const AppRouter = props => (
-  <Location>
-    {({ location }) => (
-      <Router location={location} className="router">
-        {props.children}
-      </Router>
-    )}
-  </Location>
-);
-
-
-export interface IndexPageProps {
+export interface TodosPageOwnProps {
   data: {
     site: {
       siteMetadata: {
@@ -41,34 +18,49 @@ export interface IndexPageProps {
   }
 }
 
-const Page = props => (
-  <div
-    className="page"
-    style={{ background: `hsl(${props.id * 75}, 60%, 60%)` }}
-  >
-    {props.id}
-  </div>
-)
+export interface TodosPageConnectedProps {
+  todo?: Todo;
+}
 
-const Top = props => (
-  <div>
-    <AddTodo />
-    <VisibleTodoList />
-  </div>
-)
+export interface TodosPageMatchParams {
+  todoId: string;
+}
 
-const IndexPage: React.FunctionComponent<IndexPageProps> = (props) => {
-  console.dir(props);
-  console.dir(props['*']);
-  console.dir(props['pathContext']['matchPath']);
-  return (
-  <Layout>
-    <div>unko</div>
-    <Footer />
-  </Layout>
-);
+export type TodosPageProps = TodosPageOwnProps & TodosPageConnectedProps;
+
+export const TodosPage: React.FC<TodosPageProps> = ({ todo }) => {
+  if (todo == null) {
+    return <NotFound />;
   }
-export default IndexPage
+
+  return (
+    <Layout>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} description="Sample" />
+        <div>{todo.id}</div>
+        <div>{todo.text}</div>
+    </Layout>
+  );
+};
+
+const getTodo = (todos: Todo[], todoId: number): Todo | undefined => {
+  return todos.find(todo => todo.id === todoId);
+};
+
+const mapStateToProps = ({ todos }: GlobalState, { todoId }: TodosPageMatchParams) => ({
+  todo: getTodo(todos, Number(todoId))
+});
+
+const ConnectedTodosPage = connect(mapStateToProps)(TodosPage);
+
+const MatchTodosPage: React.FC<TodosPageOwnProps> = (props) => (
+  <Match path="/todos/:todoId">
+    {({ match }: MatchRenderProps<TodosPageMatchParams>) => match && (
+      <ConnectedTodosPage todoId={match.todoId} { ...props } />
+    )}
+  </Match>
+);
+
+export default MatchTodosPage;
 
 export const query = graphql`
   query {

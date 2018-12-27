@@ -9,9 +9,9 @@ export const createPages: GatsbyCreatePages = async ({
   initialData.forEach(todo => {
     createPage({
       path: `/todos/${todo.id}`,
-      component: resolve(`./src/templates/todo-detail.tsx`),
+      component: resolve(`./src/templates/todos.tsx`),
       context: {
-        name: todo.text,
+        todo
       },
     })
   })
