@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { StaticPageComponentProps, Todo } from '../types';
 import { TodosPage } from '../pages/todos';
 
-type TodoTemplateProps = StaticPageComponentProps<{ todo: Todo }> & {
+type TodosTemplateProps = StaticPageComponentProps<{ todo: Todo }> & {
   data: {
     site: {
       siteMetadata: {
@@ -13,15 +13,14 @@ type TodoTemplateProps = StaticPageComponentProps<{ todo: Todo }> & {
   }
 }
 
-const TodoTemplate: React.FC<TodoTemplateProps> = (props) => {
-  console.dir(props);
+const TodosTemplate: React.FC<TodosTemplateProps> = (props) => {
   const { todo } = props.pageContext;
   return (
     <TodosPage todo={todo} { ...props } />
   );
 };
 
-export default TodoTemplate;
+export default TodosTemplate;
 
 export const query = graphql`
   query {

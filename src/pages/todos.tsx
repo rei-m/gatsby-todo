@@ -35,9 +35,9 @@ export const TodosPage: React.FC<TodosPageProps> = ({ todo }) => {
 
   return (
     <Layout>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} description="Sample" />
-        <div>{todo.id}</div>
-        <div>{todo.text}</div>
+      <SEO title="Todo Detail" keywords={[`gatsby`, `application`, `react`]} description="Todo Detail" />
+      <div>{todo.id}</div>
+      <div>{todo.text}</div>
     </Layout>
   );
 };

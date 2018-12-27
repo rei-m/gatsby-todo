@@ -26,11 +26,11 @@ const toggleTodo = (state: Todo, action: ToggleTodoAction): Todo => {
 // あとでgetStateから取るようにしたほうがいいかな
 export const initialData: Todo[] = [{
   id: createTodoId(),
-  text: '最初のTODO',
+  text: 'first todo.',
   completed: false
 }, {
   id: createTodoId(),
-  text: '２個めのTODO',
+  text: 'second todo.',
   completed: false
 }];
 

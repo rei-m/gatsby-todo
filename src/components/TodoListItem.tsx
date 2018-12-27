@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'gatsby'
+import styled from 'styled-components'
 
 export interface TodoProps {
   id: number;
@@ -8,27 +9,30 @@ export interface TodoProps {
   onClick: (id: number) => void;
 }
 
+const Container = styled.li<{ completed: boolean }>`
+  text-decoration: ${props => (props.completed ? 'line-through' : 'none')};
+`;
+
+const DeatilLinkWrapper = styled.span`
+  margin-left: 16px;
+`;
+
 const Todo: React.FC<TodoProps> = ({
   id, text, completed, onClick
 }) => {
-
-  const style = {
-    textDecoration: completed ? 'line-through' : 'none',
-  };
-
   const handleOnClick = (e: React.SyntheticEvent<HTMLSpanElement>) => {
     onClick(id);
   };
 
   return (
-    <li style={style}>
+    <Container completed={completed}>
       <span onClick={handleOnClick}>
         {text}
       </span>
-      <span style={ { marginLeft: 16 } }>
-        <Link to={`/todos/${id}/`}>詳細</Link>
-      </span>
-    </li>
+      <DeatilLinkWrapper>
+        <Link to={`/todos/${id}/`}>detail</Link>
+      </DeatilLinkWrapper>
+    </Container>
   );
 };
 

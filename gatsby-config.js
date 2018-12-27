@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Sample Todo`,
-    description: `Todo List created by Gatsby`,
+    title: `Gatsby Todo`,
+    description: `Todo Application created by Gatsby.`,
     author: `@rei-m`,
   },
   plugins: [
@@ -31,6 +31,7 @@ module.exports = {
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-remove-trailing-slashes`
+    `gatsby-plugin-remove-trailing-slashes`,
+    `gatsby-plugin-styled-components`
   ],
 }

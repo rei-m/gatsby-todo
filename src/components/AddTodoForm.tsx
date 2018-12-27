@@ -1,8 +1,13 @@
 import * as React from 'react';
+import styled from 'styled-components'
 
 export interface AddTodoFormProps extends React.Props<{}> {
   onSubmit: (name: string) => void;
 }
+
+const Container = styled.form`
+  padding: 16px;
+`
 
 const AddTodoForm: React.FC<AddTodoFormProps> = ({ onSubmit }) => {
 
@@ -22,7 +27,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Container onSubmit={handleSubmit}>
       <input
         type='text'
         ref={setTextInput}
@@ -30,7 +35,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onSubmit }) => {
       <button type='submit'>
         Add Todo
       </button>
-    </form>
+    </Container>
   );
 };
 

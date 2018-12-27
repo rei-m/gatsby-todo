@@ -18,8 +18,7 @@ export interface IndexPageProps {
 
 const IndexPage: React.FC<IndexPageProps> = ({ data }) => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} description="Sample" />
-    <h1>{data.site.siteMetadata.title}</h1>
+    <SEO title="Gatsby Todo" keywords={[`gatsby`, `application`, `react`]} description="Sample Application created by Gatsby." />
     <AddTodo />
     <VisibleTodoList />
     <TodoFilter />
