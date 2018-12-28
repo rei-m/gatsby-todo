@@ -28,12 +28,12 @@ const todos = (state: Todo[] = initialData, action: AddTodoAction | ToggleTodoAc
     case TOGGLE_TODO:
       return state.map(todo => {
         if (todo.id === action.id) {
-          return todo;
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
         }
-        return {
-          ...todo,
-          completed: !todo.completed,
-        };
+        return todo;
       });
     default:
       return state;
