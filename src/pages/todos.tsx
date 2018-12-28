@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { graphql } from "gatsby";
-import { Match, MatchRenderProps } from "@reach/router"
+import { graphql } from 'gatsby';
+import { Match, MatchRenderProps } from '@reach/router';
 import { SiteMetaData, Todo } from '@src/types';
 import { GlobalState } from '@src/state/createStore';
-import Layout from '@src/components/Layout'
-import SEO from '@src/components/Seo'
-import NotFound from '@src/pages/404'
+import Layout from '@src/components/Layout';
+import SEO from '@src/components/Seo';
+import NotFound from '@src/pages/404';
 
 export interface TodosPageOwnProps {
   data: {
     site: {
-      siteMetadata: Pick<SiteMetaData, 'title' | 'description'>
-    }
-  }
+      siteMetadata: Pick<SiteMetaData, 'title' | 'description'>;
+    };
+  };
 }
 
 export interface TodosPageConnectedProps {
@@ -27,7 +27,7 @@ export interface TodosPageMatchParams {
 export type TodosPageProps = TodosPageOwnProps & TodosPageConnectedProps;
 
 export const TodosPage: React.FC<TodosPageProps> = ({ data, todo }) => {
-  if (todo == null) {
+  if (todo === undefined) {
     return <NotFound />;
   }
 
@@ -50,16 +50,16 @@ const getTodo = (todos: Todo[], todoId: number): Todo | undefined => {
 };
 
 const mapStateToProps = ({ todos }: GlobalState, { todoId }: TodosPageMatchParams) => ({
-  todo: getTodo(todos, Number(todoId))
+  todo: getTodo(todos, Number(todoId)),
 });
 
 const ConnectedTodosPage = connect(mapStateToProps)(TodosPage);
 
-const MatchTodosPage: React.FC<TodosPageOwnProps> = (props) => (
+const MatchTodosPage: React.FC<TodosPageOwnProps> = props => (
   <Match path="/todos/:todoId">
-    {({ match }: MatchRenderProps<TodosPageMatchParams>) => match && (
-      <ConnectedTodosPage todoId={match.todoId} { ...props } />
-    )}
+    {({ match }: MatchRenderProps<TodosPageMatchParams>) =>
+      match && <ConnectedTodosPage todoId={match.todoId} {...props} />
+    }
   </Match>
 );
 

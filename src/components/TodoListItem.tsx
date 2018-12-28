@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Link } from 'gatsby'
-import styled from 'styled-components'
+import { Link } from 'gatsby';
+import styled from 'styled-components';
 
 export interface TodoProps {
   id: number;
@@ -17,18 +17,14 @@ const DeatilLinkWrapper = styled.span`
   margin-left: 16px;
 `;
 
-const Todo: React.FC<TodoProps> = ({
-  id, text, completed, onClick
-}) => {
+const Todo: React.FC<TodoProps> = ({ id, text, completed, onClick }) => {
   const handleOnClick = (_: React.SyntheticEvent<HTMLSpanElement>) => {
     onClick(id);
   };
 
   return (
     <Container completed={completed}>
-      <span onClick={handleOnClick}>
-        {text}
-      </span>
+      <span onClick={handleOnClick}>{text}</span>
       <DeatilLinkWrapper>
         <Link to={`/todos/${id}/`}>detail</Link>
       </DeatilLinkWrapper>

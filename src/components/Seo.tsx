@@ -1,41 +1,38 @@
 import * as React from 'react';
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import Helmet from 'react-helmet';
+import { graphql, StaticQuery } from 'gatsby';
 import { SiteMetaData } from '@src/types';
 
 export interface SEOProps {
   description?: string;
   lang?: string;
-  meta?: {
+  meta?: Array<{
     name: string;
     content: string;
-  }[];
+  }>;
   keywords?: string[];
   title: string;
 }
 
 export interface DefaultSEOQueryData {
   site: {
-    siteMetadata: SiteMetaData
-  }
+    siteMetadata: SiteMetaData;
+  };
 }
 
-const SEO: React.FC<SEOProps> = ({
-  description, lang, meta, keywords, title
-}) => {
+const SEO: React.FC<SEOProps> = ({ description, lang, meta, keywords, title }) => {
   const checkedLang: string = lang ? lang : 'en';
   const checkedKeywords: string[] = keywords ? keywords : [];
-  const checkedMeta: {
+  const checkedMeta: Array<{
     name: string;
     content: string;
-  }[] = meta ? meta : [];
+  }> = meta ? meta : [];
 
   return (
     <StaticQuery
       query={query}
       render={(data: DefaultSEOQueryData) => {
-        const metaDescription =
-          description || data.site.siteMetadata.description
+        const metaDescription = description || data.site.siteMetadata.description;
         return (
           <Helmet
             htmlAttributes={{
@@ -87,13 +84,13 @@ const SEO: React.FC<SEOProps> = ({
               )
               .concat(checkedMeta)}
           />
-        )
+        );
       }}
     />
-  )
+  );
 };
 
-export default SEO
+export default SEO;
 
 const query = graphql`
   query DefaultSEOQuery {
@@ -105,4 +102,4 @@ const query = graphql`
       }
     }
   }
-`
+`;

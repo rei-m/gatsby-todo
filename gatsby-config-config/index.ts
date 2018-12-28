@@ -5,7 +5,7 @@ export const siteMetadata: SiteMetaData = {
   title: `Gatsby Todo Sample`,
   description: `Todo Application created by Gatsby with TypeScript.`,
   author: `@rei-m`,
-}
+};
 
 export const plugins: GatsbyPlugin[] = [
   `gatsby-plugin-react-helmet`,
@@ -35,5 +35,5 @@ export const plugins: GatsbyPlugin[] = [
   // 'gatsby-plugin-offline',
   `gatsby-plugin-typescript`,
   `gatsby-plugin-remove-trailing-slashes`,
-  `gatsby-plugin-styled-components`
-]
+  `gatsby-plugin-styled-components`,
+];

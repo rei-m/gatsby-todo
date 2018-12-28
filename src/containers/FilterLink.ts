@@ -9,18 +9,18 @@ export interface FilterLinkProps {
 }
 
 const mapStateToProps = ({ visibilityFilter }: GlobalState, { filter }: FilterLinkProps) => ({
-  active: filter === visibilityFilter
+  active: filter === visibilityFilter,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<SetVisibilityFilterAction>, { filter }: FilterLinkProps) => ({
   onClick: () => {
     dispatch(setVisibilityFilter(filter));
-  }
+  },
 });
 
 const FilterLink = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Link);
 
 export default FilterLink;

@@ -6,8 +6,7 @@ export interface LinkProps {
   onClick: () => void;
 }
 
-const Link: React.FC<LinkProps> = ({children, active, onClick}) => {
-
+const Link: React.FC<LinkProps> = ({ children, active, onClick }) => {
   if (active) {
     return <span>{children}</span>;
   }
@@ -18,7 +17,7 @@ const Link: React.FC<LinkProps> = ({children, active, onClick}) => {
   };
 
   return (
-    <a href='#' onClick={handleOnClick}>
+    <a href="#" onClick={handleOnClick}>
       {children}
     </a>
   );

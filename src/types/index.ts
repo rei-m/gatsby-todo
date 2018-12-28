@@ -1,4 +1,4 @@
-import { RouteComponentProps } from "@reach/router";
+import { RouteComponentProps } from '@reach/router';
 
 export interface SiteMetaData {
   readonly title: string;
@@ -6,7 +6,7 @@ export interface SiteMetaData {
   readonly author: string;
 }
 
-export type GeneratedPageComponentProps<T = {}> = { pageContext: T } & RouteComponentProps<T>
+export type GeneratedPageComponentProps<T = {}> = { pageContext: T } & RouteComponentProps<T>;
 
 export interface Todo {
   readonly id: number;

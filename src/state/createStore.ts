@@ -1,11 +1,7 @@
-import {
-  createStore as reduxCreateStore,
-  combineReducers,
-  Reducer
-} from "redux"
+import { combineReducers, createStore as reduxCreateStore, Reducer } from 'redux';
 import todos from '@src/state/todos';
 import visibilityFilter from '@src/state/visibilityFilter';
-import { Todo } from "@src/types";
+import { Todo } from '@src/types';
 
 export interface GlobalState {
   readonly todos: Todo[];
@@ -17,6 +13,6 @@ const reducer: Reducer<GlobalState> = combineReducers<GlobalState>({
   visibilityFilter,
 });
 
-const createStore = () => reduxCreateStore(reducer)
+const createStore = () => reduxCreateStore(reducer);
 
-export default createStore
+export default createStore;

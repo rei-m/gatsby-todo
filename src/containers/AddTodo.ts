@@ -6,12 +6,12 @@ import AddTodoForm from '@src/components/AddTodoForm';
 const mapDispatchToProps = (dispatch: Dispatch<AddTodoAction>) => ({
   onSubmit: (name: string) => {
     dispatch(addTodo(name));
-  }
+  },
 });
 
 const AddTodo = connect(
   undefined,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(AddTodoForm);
 
 export default AddTodo;
