@@ -28,7 +28,6 @@ exports.onCreatePage = config.onCreatePage;
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
-    mode: process.env.NODE_ENV,
     resolve: {
       alias: {
         '@src': resolve(__dirname, 'src/'),
