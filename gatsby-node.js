@@ -9,7 +9,7 @@ require('ts-node').register({
   },
 })
 
-const config = require('./gatsuby-node-config');
+const config = require('./gatsby-node-config');
 
 exports.createPages = config.createPages;
 

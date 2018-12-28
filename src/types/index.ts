@@ -1,6 +1,12 @@
 import { RouteComponentProps } from "@reach/router";
 
-export type StaticPageComponentProps<T = {}> = {
+export interface SiteMetaData {
+  readonly title: string;
+  readonly description: string;
+  readonly author: string;
+}
+
+export type GeneratedPageComponentProps<T = {}> = {
   pageContext: T;
 } & RouteComponentProps<T>
 

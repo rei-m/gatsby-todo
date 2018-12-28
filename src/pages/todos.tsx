@@ -1,19 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { graphql } from "gatsby";
 import { Match, MatchRenderProps } from "@reach/router"
+import { GlobalState } from '../state/createStore';
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import NotFound from './404'
-import { Todo } from '../types';
-import { GlobalState } from '../state/createStore';
-import { connect } from 'react-redux';
+import { SiteMetaData, Todo } from '../types';
 
 export interface TodosPageOwnProps {
   data: {
     site: {
-      siteMetadata: {
-        title: string;
-      }
+      siteMetadata: Pick<SiteMetaData, 'title' | 'description'>
     }
   }
 }
@@ -28,16 +26,21 @@ export interface TodosPageMatchParams {
 
 export type TodosPageProps = TodosPageOwnProps & TodosPageConnectedProps;
 
-export const TodosPage: React.FC<TodosPageProps> = ({ todo }) => {
+export const TodosPage: React.FC<TodosPageProps> = ({ data, todo }) => {
   if (todo == null) {
     return <NotFound />;
   }
 
   return (
     <Layout>
-      <SEO title="Todo Detail" keywords={[`gatsby`, `application`, `react`]} description="Todo Detail" />
-      <div>{todo.id}</div>
-      <div>{todo.text}</div>
+      <SEO
+        title={`${data.site.siteMetadata.title}`}
+        keywords={[`gatsby`, `application`, `react`]}
+        description={data.site.siteMetadata.description}
+      />
+      <div>{`id: ${todo.id}`}</div>
+      <div>{`text: ${todo.text}`}</div>
+      <div>{`completed: ${todo.completed}`}</div>
     </Layout>
   );
 };
@@ -67,6 +70,7 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
   }

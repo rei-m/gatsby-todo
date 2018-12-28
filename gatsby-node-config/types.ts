@@ -1,5 +1,3 @@
-import { string } from "postcss-selector-parser";
-
 interface PageInput {
   path: string
   component: string

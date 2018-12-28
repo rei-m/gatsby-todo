@@ -5,20 +5,23 @@ import VisibleTodoList from '../containers/VisibleTodoList';
 import Layout from '../components/Layout'
 import TodoFilter from '../components/TodoFilter'
 import SEO from '../components/Seo'
+import { SiteMetaData } from '../types';
 
 export interface IndexPageProps {
   data: {
     site: {
-      siteMetadata: {
-        title: string;
-      }
+      siteMetadata: Pick<SiteMetaData, 'title' | 'description'>
     }
   }
 }
 
 const IndexPage: React.FC<IndexPageProps> = ({ data }) => (
   <Layout>
-    <SEO title="Gatsby Todo" keywords={[`gatsby`, `application`, `react`]} description="Sample Application created by Gatsby." />
+    <SEO
+      title={data.site.siteMetadata.title}
+      keywords={[`gatsby`, `application`, `react`]}
+      description={data.site.siteMetadata.description}
+    />
     <AddTodo />
     <VisibleTodoList />
     <TodoFilter />
@@ -32,6 +35,7 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
   }

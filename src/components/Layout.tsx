@@ -1,6 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
+import { SiteMetaData } from '../types';
 import Header from './Header'
 import './normalize.css'
 import './layout.css'
@@ -12,24 +13,22 @@ const Main = styled.main`
   padding-top: 0;
 `
 
-interface LayoutProps {
+export interface LayoutProps {
   children: React.ReactNode;
+}
+
+export interface SiteTitleQueryData {
+  site: {
+    siteMetadata: Pick<SiteMetaData, 'title'>
+  }
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => (
   <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
+    query={query}
+    render={({ site }: SiteTitleQueryData) => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle={site.siteMetadata.title} />
         <Main>{children}</Main>
       </>
     )}
@@ -37,3 +36,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => (
 )
 
 export default Layout
+
+const query = graphql`
+  query SiteTitleQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`

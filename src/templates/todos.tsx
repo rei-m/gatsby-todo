@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql } from "gatsby";
-import { StaticPageComponentProps, Todo } from '../types';
+import { GeneratedPageComponentProps, Todo } from '../types';
 import { TodosPage } from '../pages/todos';
 
-type TodosTemplateProps = StaticPageComponentProps<{ todo: Todo }> & {
+type TodosTemplateProps = GeneratedPageComponentProps<{ todo: Todo }> & {
   data: {
     site: {
       siteMetadata: {
@@ -13,12 +13,9 @@ type TodosTemplateProps = StaticPageComponentProps<{ todo: Todo }> & {
   }
 }
 
-const TodosTemplate: React.FC<TodosTemplateProps> = (props) => {
-  const { todo } = props.pageContext;
-  return (
-    <TodosPage todo={todo} { ...props } />
-  );
-};
+const TodosTemplate: React.FC<TodosTemplateProps> = (props) => (
+  <TodosPage todo={props.pageContext.todo} { ...props } />
+);
 
 export default TodosTemplate;
 

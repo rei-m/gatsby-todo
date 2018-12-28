@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import { SiteMetaData } from '../types';
 
 export interface SEOProps {
   description?: string;
@@ -15,11 +16,7 @@ export interface SEOProps {
 
 export interface DefaultSEOQueryData {
   site: {
-    siteMetadata: {
-      title: string;
-      description: string;
-      author: string;
-    }
+    siteMetadata: SiteMetaData
   }
 }
 
@@ -35,7 +32,7 @@ const SEO: React.FC<SEOProps> = ({
 
   return (
     <StaticQuery
-      query={detailsQuery}
+      query={query}
       render={(data: DefaultSEOQueryData) => {
         const metaDescription =
           description || data.site.siteMetadata.description
@@ -98,7 +95,7 @@ const SEO: React.FC<SEOProps> = ({
 
 export default SEO
 
-const detailsQuery = graphql`
+const query = graphql`
   query DefaultSEOQuery {
     site {
       siteMetadata {
