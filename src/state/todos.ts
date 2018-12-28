@@ -21,13 +21,13 @@ const todos = (state: Todo[] = initialData, action: AddTodoAction | ToggleTodoAc
         ...state,
         {
           completed: false,
-          id: action.id,
-          text: action.text,
+          id: action.payload.id,
+          text: action.payload.text,
         },
       ];
     case TOGGLE_TODO:
       return state.map(todo => {
-        if (todo.id === action.id) {
+        if (todo.id === action.payload.id) {
           return {
             ...todo,
             completed: !todo.completed,

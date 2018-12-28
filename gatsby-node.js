@@ -18,9 +18,6 @@ require('ts-node').register({
   }
 })
 
-// When path registration is no longer needed
-// cleanup();
-
 const { resolve } = require('path');
 
 const config = require('./gatsby-node-config');

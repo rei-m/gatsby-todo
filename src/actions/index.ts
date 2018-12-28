@@ -22,18 +22,24 @@ export const VisibilityFilter = {
 
 export interface SetVisibilityFilterAction extends Action {
   type: typeof SET_VISIBILITY_FILTER;
-  filter: string;
+  payload: {
+    filter: string;
+  };
 }
 
 export interface AddTodoAction extends Action {
   type: typeof ADD_TODO;
-  id: number;
-  text: string;
+  payload: {
+    id: number;
+    text: string;
+  };
 }
 
 export interface ToggleTodoAction extends Action {
   type: typeof TOGGLE_TODO;
-  id: number;
+  payload: {
+    id: number;
+  };
 }
 
 /*
@@ -41,22 +47,28 @@ export interface ToggleTodoAction extends Action {
  */
 export function addTodo(text: string): AddTodoAction {
   return {
-    id: createTodoId(),
-    text: text,
     type: ADD_TODO,
+    payload: {
+      id: createTodoId(),
+      text,
+    },
   };
 }
 
 export function toggleTodo(id: number): ToggleTodoAction {
   return {
-    id: id,
     type: TOGGLE_TODO,
+    payload: {
+      id,
+    },
   };
 }
 
 export function setVisibilityFilter(filter: string): SetVisibilityFilterAction {
   return {
-    filter: filter,
     type: SET_VISIBILITY_FILTER,
+    payload: {
+      filter,
+    },
   };
 }
