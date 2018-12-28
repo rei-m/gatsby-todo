@@ -1,14 +1,14 @@
-interface PageInput {
+interface PageInput<T> {
   path: string
   component: string
   layout?: string
-  context?: any
+  context?: T
   matchPath?: string
 }
 
-interface GatsbyActionCreators {
-  createPage: (page: PageInput) => void
-  deletePage: (page: PageInput) => void
+interface GatsbyActionCreators<T> {
+  createPage: (page: PageInput<T>) => void
+  deletePage: (page: PageInput<T>) => void
   createRedirect: (
     opts: {
       fromPath: string
@@ -19,10 +19,10 @@ interface GatsbyActionCreators {
   ) => void
 }
 
-export type GatsbyCreatePages = (
-  fns: { graphql: any; actions: GatsbyActionCreators }
+export type GatsbyCreatePages<T> = (
+  fns: { graphql: string; actions: GatsbyActionCreators<T>}
 ) => void
 
-export type GatsbyOnCreatePage = (
-  fns: { page: PageInput; actions: GatsbyActionCreators }
+export type GatsbyOnCreatePage<T> = (
+  fns: { page: PageInput<T>; actions: GatsbyActionCreators<T> }
 ) => void

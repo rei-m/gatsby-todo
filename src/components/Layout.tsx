@@ -1,10 +1,10 @@
-import React from 'react'
+import * as React from 'react';
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import { SiteMetaData } from '../types';
-import Header from './Header'
-import './normalize.css'
-import './layout.css'
+import { SiteMetaData } from '@src/types';
+import Header from '@src/components/Header'
+import '@src/components/normalize.css'
+import '@src/components/layout.css'
 
 const Main = styled.main`
   margin: 0 auto;

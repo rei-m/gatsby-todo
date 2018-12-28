@@ -43,6 +43,7 @@
     "prettier": "^1.15.2",
     "source-map-support": "^0.5.9",
     "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.7.0",
     "typescript": "^3.2.2"
   },
   "repository": {

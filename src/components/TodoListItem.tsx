@@ -20,7 +20,7 @@ const DeatilLinkWrapper = styled.span`
 const Todo: React.FC<TodoProps> = ({
   id, text, completed, onClick
 }) => {
-  const handleOnClick = (e: React.SyntheticEvent<HTMLSpanElement>) => {
+  const handleOnClick = (_: React.SyntheticEvent<HTMLSpanElement>) => {
     onClick(id);
   };
 

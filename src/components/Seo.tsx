@@ -1,7 +1,7 @@
-import React from 'react'
+import * as React from 'react';
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import { SiteMetaData } from '../types';
+import { SiteMetaData } from '@src/types';
 
 export interface SEOProps {
   description?: string;

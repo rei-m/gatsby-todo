@@ -3,9 +3,9 @@ import {
   combineReducers,
   Reducer
 } from "redux"
-import todos from './todos';
-import visibilityFilter from './visibilityFilter';
-import { Todo } from "../types";
+import todos from '@src/state/todos';
+import visibilityFilter from '@src/state/visibilityFilter';
+import { Todo } from "@src/types";
 
 export interface GlobalState {
   readonly todos: Todo[];

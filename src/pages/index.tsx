@@ -1,11 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import { graphql } from "gatsby";
-import AddTodo from '../containers/AddTodo';
-import VisibleTodoList from '../containers/VisibleTodoList';
-import Layout from '../components/Layout'
-import TodoFilter from '../components/TodoFilter'
-import SEO from '../components/Seo'
-import { SiteMetaData } from '../types';
+import { SiteMetaData } from '@src/types';
+import AddTodo from '@src/containers/AddTodo';
+import VisibleTodoList from '@src/containers/VisibleTodoList';
+import Layout from '@src/components/Layout'
+import TodoFilter from '@src/components/TodoFilter'
+import SEO from '@src/components/Seo'
 
 export interface IndexPageProps {
   data: {

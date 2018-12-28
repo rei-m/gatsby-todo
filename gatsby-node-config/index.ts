@@ -1,10 +1,9 @@
 import { resolve } from 'path';
 import { GatsbyCreatePages, GatsbyOnCreatePage } from './types';
-import { initialData } from '../src/state/todos';
+import { initialData } from '@src/state/todos';
+import { Todo } from '@src/types';
 
-export const createPages: GatsbyCreatePages = async ({
-  actions
-}) => {
+export const createPages: GatsbyCreatePages<{todo: Todo}> = async ({ actions }) => {
   const { createPage } = actions
   initialData.forEach(todo => {
     createPage({
@@ -17,7 +16,7 @@ export const createPages: GatsbyCreatePages = async ({
   })
 }
 
-export const onCreatePage: GatsbyOnCreatePage = async ({ page, actions }) => {
+export const onCreatePage: GatsbyOnCreatePage<{todo: Todo}> = async ({ page, actions }) => {
   const { createPage } = actions
 
   // page.matchPath is a special key that's used for matching pages

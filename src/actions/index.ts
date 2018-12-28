@@ -1,6 +1,6 @@
 import { Action } from 'redux';
 
-let nextTodoId = 0;
+let nextTodoId = 1;
 
 export const createTodoId = () => nextTodoId++;
 

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { setVisibilityFilter, SetVisibilityFilterAction } from '../actions';
-import { GlobalState } from '../state/createStore';
-import Link from '../components/Link';
+import { setVisibilityFilter, SetVisibilityFilterAction } from '@src/actions';
+import { GlobalState } from '@src/state/createStore';
+import Link from '@src/components/Link';
 
 export interface FilterLinkProps {
   filter: string;

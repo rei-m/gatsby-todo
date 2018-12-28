@@ -1,12 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { graphql } from "gatsby";
 import { Match, MatchRenderProps } from "@reach/router"
-import { GlobalState } from '../state/createStore';
-import Layout from '../components/Layout'
-import SEO from '../components/Seo'
-import NotFound from './404'
-import { SiteMetaData, Todo } from '../types';
+import { SiteMetaData, Todo } from '@src/types';
+import { GlobalState } from '@src/state/createStore';
+import Layout from '@src/components/Layout'
+import SEO from '@src/components/Seo'
+import NotFound from '@src/pages/404'
 
 export interface TodosPageOwnProps {
   data: {

@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { toggleTodo, VisibilityFilter, ToggleTodoAction } from '../actions';
-import TodoList from '../components/TodoList';
-import { Todo } from '../types';
-import { GlobalState } from '../state/createStore';
+import { toggleTodo, VisibilityFilter, ToggleTodoAction } from '@src/actions';
+import { Todo } from '@src/types';
+import { GlobalState } from '@src/state/createStore';
+import TodoList from '@src/components/TodoList';
 
 const getVisibleTodos = (todos: Todo[], filter: string) => {
   switch (filter) {
@@ -13,6 +13,8 @@ const getVisibleTodos = (todos: Todo[], filter: string) => {
       return todos.filter((t) => t.completed);
     case VisibilityFilter.SHOW_ACTIVE:
       return todos.filter((t) => !t.completed);
+    default:
+      return [];
   }
 };
 
