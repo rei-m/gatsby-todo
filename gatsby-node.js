@@ -5,8 +5,7 @@ require('source-map-support').install()
 require("tsconfig-paths").register({
   baseUrl: './',
   paths: {
-    '@src/*': [ 'src/*' ],
-    '@test/*': [ 'test/*' ]
+    '@src/*': [ 'src/*' ]
   }
 });
 
@@ -14,13 +13,16 @@ require('ts-node').register({
   compilerOptions: {
     module: 'commonjs',
     target: 'es2017',
-    noImplicitAny: false
+    noImplicitAny: false,
+    types: [
+      'node'
+    ]
   }
-})
+});
 
 const { resolve } = require('path');
 
-const config = require('./gatsby-node-config');
+const config = require('./gatsby-node-impl');
 
 exports.createPages = config.createPages;
 
@@ -30,8 +32,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        '@src': resolve(__dirname, 'src/'),
-        '@test': resolve(__dirname, 'test/')
+        '@src': resolve(__dirname, 'src/')
       }
     }
   })

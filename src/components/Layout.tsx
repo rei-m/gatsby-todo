@@ -3,8 +3,6 @@ import { graphql, StaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { SiteMetaData } from '@src/types';
 import Header from '@src/components/Header';
-import '@src/components/normalize.css';
-import '@src/components/layout.css';
 
 const Main = styled.main`
   margin: 0 auto;
