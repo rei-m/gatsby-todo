@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Helmet from 'react-helmet';
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import { SiteMetaData } from '@src/types';
 
 export interface SEOProps {
@@ -27,65 +27,58 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, keywords, title }) =
     name: string;
     content: string;
   }> = meta ? meta : [];
-
+  const data = useStaticQuery<DefaultSEOQueryData>(query);
+  const metaDescription = description || data.site.siteMetadata.description;
   return (
-    <StaticQuery
-      query={query}
-      render={(data: DefaultSEOQueryData) => {
-        const metaDescription = description || data.site.siteMetadata.description;
-        return (
-          <Helmet
-            htmlAttributes={{
-              lang: checkedLang,
-            }}
-            title={title}
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
-            meta={[
-              {
-                name: `description`,
-                content: metaDescription,
-              },
-              {
-                property: `og:title`,
-                content: title,
-              },
-              {
-                property: `og:description`,
-                content: metaDescription,
-              },
-              {
-                property: `og:type`,
-                content: `website`,
-              },
-              {
-                name: `twitter:card`,
-                content: `summary`,
-              },
-              {
-                name: `twitter:creator`,
-                content: data.site.siteMetadata.author,
-              },
-              {
-                name: `twitter:title`,
-                content: title,
-              },
-              {
-                name: `twitter:description`,
-                content: metaDescription,
-              },
-            ]
-              .concat(
-                checkedKeywords.length > 0
-                  ? {
-                      name: `keywords`,
-                      content: checkedKeywords.join(`, `),
-                    }
-                  : []
-              )
-              .concat(checkedMeta)}
-          />
-        );
+    <Helmet
+      htmlAttributes={{
+        lang: checkedLang,
       }}
+      title={title}
+      titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+      meta={[
+        {
+          name: `description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:title`,
+          content: title,
+        },
+        {
+          property: `og:description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:type`,
+          content: `website`,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary`,
+        },
+        {
+          name: `twitter:creator`,
+          content: data.site.siteMetadata.author,
+        },
+        {
+          name: `twitter:title`,
+          content: title,
+        },
+        {
+          name: `twitter:description`,
+          content: metaDescription,
+        },
+      ]
+        .concat(
+          checkedKeywords.length > 0
+            ? {
+                name: `keywords`,
+                content: checkedKeywords.join(`, `),
+              }
+            : []
+        )
+        .concat(checkedMeta)}
     />
   );
 };

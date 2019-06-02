@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { SiteMetaData } from '@src/types';
 import Header from '@src/components/Header';
@@ -22,15 +22,10 @@ export interface SiteTitleQueryData {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => (
-  <StaticQuery
-    query={query}
-    render={({ site }: SiteTitleQueryData) => (
-      <>
-        <Header siteTitle={site.siteMetadata.title} />
-        <Main>{children}</Main>
-      </>
-    )}
-  />
+  <>
+    <Header siteTitle={useStaticQuery<SiteTitleQueryData>(query).site.siteMetadata.title} />
+    <Main>{children}</Main>
+  </>
 );
 
 export default Layout;

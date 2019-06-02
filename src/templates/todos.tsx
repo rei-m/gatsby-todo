@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import { GeneratedPageComponentProps, SiteMetaData, Todo } from '@src/types';
 import { TodosPage } from '@src/pages/todos';
 
@@ -12,10 +12,7 @@ export interface SiteTitleQueryData {
 }
 
 const TodosTemplate: React.FC<TodosTemplateProps> = props => (
-  <StaticQuery
-    query={query}
-    render={(queryData: SiteTitleQueryData) => <TodosPage todo={props.pageContext.todo} data={queryData} />}
-  />
+  <TodosPage todo={props.pageContext.todo} data={useStaticQuery<SiteTitleQueryData>(query)} />
 );
 
 export default TodosTemplate;
