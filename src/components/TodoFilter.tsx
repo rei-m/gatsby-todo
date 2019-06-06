@@ -1,7 +1,7 @@
 import * as React from 'react';
 import FilterLink from '@src/containers/FilterLink';
 
-const Footer: React.FC = () => (
+const Footer = () => (
   <p>
     Show: <FilterLink filter="SHOW_ALL">All</FilterLink>
     {', '}

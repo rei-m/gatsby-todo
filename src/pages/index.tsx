@@ -15,7 +15,7 @@ export interface IndexPageProps {
   };
 }
 
-const IndexPage: React.FC<IndexPageProps> = ({ data }) => (
+const IndexPage = ({ data }: IndexPageProps) => (
   <Layout>
     <SEO
       title={data.site.siteMetadata.title}

@@ -21,7 +21,7 @@ const Title = styled.h1`
   margin: 0;
 `;
 
-const Header: React.FC<HeaderProps> = ({ siteTitle }) => (
+const Header = ({ siteTitle }: HeaderProps) => (
   <Container>
     <TitleWrapper>
       <Title>

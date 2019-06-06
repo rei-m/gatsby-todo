@@ -20,7 +20,7 @@ export interface DefaultSEOQueryData {
   };
 }
 
-const SEO: React.FC<SEOProps> = ({ description, lang, meta, keywords, title }) => {
+const SEO = ({ description, lang, meta, keywords, title }: SEOProps) => {
   const checkedLang: string = lang ? lang : 'en';
   const checkedKeywords: string[] = keywords ? keywords : [];
   const checkedMeta: Array<{

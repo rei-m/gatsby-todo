@@ -9,7 +9,7 @@ const Container = styled.form`
   padding: 16px;
 `;
 
-const AddTodoForm: React.FC<AddTodoFormProps> = ({ onSubmit }) => {
+const AddTodoForm = ({ onSubmit }: AddTodoFormProps) => {
   let textInput: HTMLInputElement;
 
   const setTextInput = (input: HTMLInputElement) => {

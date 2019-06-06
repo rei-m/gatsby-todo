@@ -1,12 +1,12 @@
-'use strict'
+'use strict';
 
-require('source-map-support').install()
+require('source-map-support').install();
 
-require("tsconfig-paths").register({
+require('tsconfig-paths').register({
   baseUrl: './',
   paths: {
-    '@src/*': [ 'src/*' ]
-  }
+    '@src/*': ['src/*'],
+  },
 });
 
 require('ts-node').register({
@@ -14,15 +14,13 @@ require('ts-node').register({
     module: 'commonjs',
     target: 'es2017',
     noImplicitAny: false,
-    types: [
-      "node"
-    ]
-  }
-})
+    types: ['node'],
+  },
+});
 
 const config = require('./gatsby-config-impl');
 
 module.exports = {
   siteMetadata: config.siteMetadata,
-  plugins: config.plugins
-}
+  plugins: config.plugins,
+};

@@ -11,17 +11,13 @@ const Main = styled.main`
   padding-top: 0;
 `;
 
-export interface LayoutProps {
-  children: React.ReactNode;
-}
-
 export interface SiteTitleQueryData {
   site: {
     siteMetadata: Pick<SiteMetaData, 'title'>;
   };
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => (
+const Layout: React.FC<{}> = ({ children }) => (
   <>
     <Header siteTitle={useStaticQuery<SiteTitleQueryData>(query).site.siteMetadata.title} />
     <Main>{children}</Main>

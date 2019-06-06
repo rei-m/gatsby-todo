@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 export interface LinkProps {
-  children: React.ReactNode;
   active: boolean;
   onClick: () => void;
 }

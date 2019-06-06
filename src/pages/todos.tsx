@@ -26,7 +26,7 @@ export interface TodosPageMatchParams {
 
 export type TodosPageProps = TodosPageOwnProps & TodosPageConnectedProps;
 
-export const TodosPage: React.FC<TodosPageProps> = ({ data, todo }) => {
+export const TodosPage = ({ data, todo }: TodosPageProps) => {
   if (todo === undefined) {
     return <NotFound />;
   }

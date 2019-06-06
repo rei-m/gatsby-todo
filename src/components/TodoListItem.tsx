@@ -17,7 +17,7 @@ const DeatilLinkWrapper = styled.span`
   margin-left: 16px;
 `;
 
-const Todo: React.FC<TodoProps> = ({ id, text, completed, onClick }) => {
+const Todo = ({ id, text, completed, onClick }: TodoProps) => {
   const handleOnClick = (_: React.SyntheticEvent<HTMLSpanElement>) => {
     onClick(id);
   };
